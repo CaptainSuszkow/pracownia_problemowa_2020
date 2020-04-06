@@ -121,6 +121,20 @@ public class WindowApp extends Application {
             simulation.deleteUnsafeCircles();
         });
 
+        Button addSybilAttackerButton = new Button("Add sybil attacker");
+        addSybilAttackerButton.setLayoutX(1130.0);
+        addSybilAttackerButton.setLayoutY(460.0);
+
+        TextField amountOfDevices = new TextField();
+        amountOfDevices.setLayoutX(1130.0);
+        amountOfDevices.setLayoutY(520.0);
+        amountOfDevices.setText("10");
+
+        Label amountOfSybilAttackersLabel = new Label("Amount of devices to fake");
+        amountOfSybilAttackersLabel.setLayoutX(1130.0);
+        amountOfSybilAttackersLabel.setLayoutY(500.0);
+
+
 
         // Vehicle informations.
         this.trustLevelField = new TextField();
@@ -178,6 +192,8 @@ public class WindowApp extends Application {
         hackerVehiclesList.setMaxHeight(100);
         hackerVehiclesList.setMaxWidth(175.0);
         hackerVehiclesList.setItems(simulation.getMap().getVehicles());
+
+
 //.filtered(x->!x.safe)
 
 
@@ -277,6 +293,9 @@ public class WindowApp extends Application {
                         addHackerVehicle,
                         clearNotSafe,
                         hackerVehiclesList,
+                        addSybilAttackerButton,
+                        amountOfDevices,
+                        amountOfSybilAttackersLabel,
                         seeThrough);
     }
 
