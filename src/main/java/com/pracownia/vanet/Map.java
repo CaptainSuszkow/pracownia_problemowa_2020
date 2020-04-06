@@ -144,4 +144,10 @@ public class Map {
 		fakeEventId--;
 	}
 
+	public void addSybilAttacker(int amount)
+	{
+		Random random = new Random();
+		int id = random.nextInt() % 100 + 100;
+		vehicles.add(new SybilVehicle(routes.get(id%5), id, 40.0, random.nextDouble() / 2.0 + 2, amount));
+	}
 }

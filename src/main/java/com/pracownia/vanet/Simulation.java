@@ -216,7 +216,6 @@ public class Simulation implements Runnable {
     public void addHacker() {
 
     }
-
 /*
 	private void showVehiclesConnected(){
 		int it = 0;

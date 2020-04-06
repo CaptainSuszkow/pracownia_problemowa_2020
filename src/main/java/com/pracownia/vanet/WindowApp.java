@@ -121,14 +121,15 @@ public class WindowApp extends Application {
             simulation.deleteUnsafeCircles();
         });
 
-        Button addSybilAttackerButton = new Button("Add sybil attacker");
-        addSybilAttackerButton.setLayoutX(1130.0);
-        addSybilAttackerButton.setLayoutY(460.0);
-
         TextField amountOfDevices = new TextField();
         amountOfDevices.setLayoutX(1130.0);
         amountOfDevices.setLayoutY(520.0);
         amountOfDevices.setText("10");
+
+        Button addSybilAttackerButton = new Button("Add sybil attacker");
+        addSybilAttackerButton.setLayoutX(1130.0);
+        addSybilAttackerButton.setLayoutY(460.0);
+
 
         Label amountOfSybilAttackersLabel = new Label("Amount of devices to fake");
         amountOfSybilAttackersLabel.setLayoutX(1130.0);
@@ -249,6 +250,12 @@ public class WindowApp extends Application {
             } else {
                 simulation.switchOffRangeCircles();
             }
+        });
+
+        addSybilAttackerButton.setOnAction(e -> {
+            simulation.getMap().addSybilAttacker(Integer.valueOf(amountOfDevices.getText()));
+            shapesCreator.setVehicleCircles(simulation, 1);
+            shapesCreator.setLabels(simulation, 1);
         });
 
         spawnFakedVeehicle.setOnAction(e -> {
