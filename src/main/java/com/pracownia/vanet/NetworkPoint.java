@@ -5,6 +5,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public abstract class NetworkPoint {
@@ -26,7 +27,16 @@ public abstract class NetworkPoint {
     }
 
     public void updateConnectedPoints(Map map) {
-        for (Vehicle v : map.getVehicles()) {
+        List<Vehicle> vehiclesToCheck = new ArrayList<>(map.getVehicles());
+
+        List<Vehicle> fakes = vehiclesToCheck.stream()
+                .filter(v -> v instanceof SybilVehicle)
+                .map(v -> ((SybilVehicle)v).getFakeVehicles())
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+        vehiclesToCheck.addAll(fakes);
+
+        for (Vehicle v : vehiclesToCheck) {
             if (v == this) {
                 continue;
             }

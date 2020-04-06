@@ -147,7 +147,7 @@ public class Map {
 	public void addSybilAttacker(int amount)
 	{
 		Random random = new Random();
-		int id = random.nextInt() % 100 + 100;
-		vehicles.add(new SybilVehicle(routes.get(id%5), id, 40.0, random.nextDouble() / 2.0 + 2, amount));
+		int id = Math.abs(random.nextInt() % 1000) + 1000;
+		vehicles.add(new SybilVehicle(routes.get(1), id, 40.0, 10, amount));
 	}
 }
